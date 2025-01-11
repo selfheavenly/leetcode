@@ -1,14 +1,17 @@
-typedef struct {
+#include <stdlib.h>
+struct ListNode {
     int val;
     struct ListNode *next;
-} ListNode;
+};
+
+typedef struct ListNode ListNode;
 
 struct ListNode* reverseList(struct ListNode* head){
-    if(head == NULL || head->next == NULL) return head;
+    if(!head || !head->next) return head;
     struct ListNode* prev = head;
     struct ListNode* curr = prev->next;
     head->next = NULL;
-    while(prev != NULL && curr != NULL){
+    while(prev && curr){
         struct ListNode* next = curr->next;
         curr->next = prev;
         prev = curr;
